@@ -67,7 +67,7 @@ class Hangman
     output
   end
   def display_noose()
-    output = "<span class='noose'>&nbsp&nbsp&nbsp&nbsp&nbsp-----------<br>"
+    output = "<span class='bold'>&nbsp&nbsp&nbsp&nbsp&nbsp-----------<br>"
     if @hanged > 0
       # Head
       output += "&nbsp&nbsp&nbsp&nbsp/\\&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>&nbsp&nbsp&nbsp&nbsp\\/&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>"
@@ -101,7 +101,7 @@ class Hangman
     word = @game_word.chars.to_a
     unused_letters = []
     output_array = create_output_word(word)
-    output += "<span class='noose'>" + output_array.join(" ") + "</span><br><br>"
+    output += "<span class='bold'>" + output_array.join(" ") + "</span><br><br>"
     @guessed_letters.each do |letter|
       if !word.include?(letter)
         unused_letters.push(letter)
