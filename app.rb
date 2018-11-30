@@ -15,15 +15,3 @@ post('/') do
   @hangman = Hangman.current_game
   erb(:hangman)
 end
-
-# post('/lose') do
-#   @letter = "lose"
-#   @hangman = Hangman.current_game
-#   erb(:hangman)
-# end
-#
-# post('/win') do
-#   @letter = "win"
-#   @hangman = Hangman.current_game
-#   erb(:hangman)
-# end

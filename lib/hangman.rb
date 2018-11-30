@@ -1,15 +1,3 @@
-# output = "-------------<br>"
-# empty = "                |"
-# if hanged > 0
-#   output += "/\\             |<br>\\/            |"
-# else
-#   output +=empty+ "<br>" + empty
-# end
-#
-# ...
-#
-# output += "<br><br>"
-
 class Hangman
   attr_accessor :words, :hanged, :game_words, :guessed_letters
   def initialize(words = WordList.new)
@@ -64,7 +52,7 @@ class Hangman
     return true
   end
   def display_screen(is_error, is_start, win_loss)
-    output = display_noose + "<br><br>" + display_word
+    output = display_noose + "<br>" + display_word
     if is_error
       output += "<br>Your input was invalid!  Please try again!"
     end
@@ -79,7 +67,7 @@ class Hangman
     output
   end
   def display_noose()
-    output = "&nbsp&nbsp&nbsp&nbsp&nbsp-----------<br>"
+    output = "<span class='noose'>&nbsp&nbsp&nbsp&nbsp&nbsp-----------<br>"
     if @hanged > 0
       # Head
       output += "&nbsp&nbsp&nbsp&nbsp/\\&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>&nbsp&nbsp&nbsp&nbsp\\/&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>"
@@ -97,7 +85,7 @@ class Hangman
       output += "&nbsp&nbsp&nbsp&nbsp/\\&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>&nbsp&nbsp/&nbsp&nbsp&nbsp&nbsp\\&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|<br>"
     end
     output += create_empty_lines(2*(4 - @hanged))
-    output += "       ---------------"
+    output += "       ---------------</span>"
   end
   def create_empty_lines(number)
     output = ""
@@ -109,19 +97,11 @@ class Hangman
     output
   end
   def display_word
-    # output = ""
-    # spaces = @game_word.length
-    # index = 0
-    # while spaces > index
-    #   output += "_ "
-    #   index += 1
-    # end
-    # output
     output = ""
     word = @game_word.chars.to_a
     unused_letters = []
     output_array = create_output_word(word)
-    output += output_array.join(" ") + "<br><br>"
+    output += "<span class='noose'>" + output_array.join(" ") + "</span><br><br>"
     @guessed_letters.each do |letter|
       if !word.include?(letter)
         unused_letters.push(letter)
